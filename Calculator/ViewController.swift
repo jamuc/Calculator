@@ -10,16 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var display: UILabel!
+    
+    var userIsInTheMiddelOfTyping = false
+    
+    @IBAction func touchDigit(sender: UIButton) {
+        let title = sender.currentTitle!
+        
+        if userIsInTheMiddelOfTyping {
+            display.text! += title
+        } else {
+            display.text = title
+        }
+        userIsInTheMiddelOfTyping = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func performOperation(sender: UIButton) {
+        userIsInTheMiddelOfTyping = false
+        if let mathematicalSymbol = sender.currentTitle {
+            if mathematicalSymbol == "pi" {
+                display.text = String(M_PI)
+            }
+        }
     }
-
-
 }
 
