@@ -40,6 +40,8 @@ class ViewController: UIViewController {
         if let mathematicalSymbol = sender.currentTitle {
             if mathematicalSymbol == "pi" {
                 displayValue = M_PI
+            } else if mathematicalSymbol == "sqrt" {
+                displayValue = sqrt(displayValue)
             }
         }
     }
