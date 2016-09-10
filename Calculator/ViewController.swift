@@ -35,14 +35,13 @@ class ViewController: UIViewController {
         }
     }
 
+    private var calculator = CalculatorBrain()
     @IBAction private func performOperation(sender: UIButton) {
         userIsInTheMiddelOfTyping = false
         if let mathematicalSymbol = sender.currentTitle {
-            if mathematicalSymbol == "pi" {
-                displayValue = M_PI
-            } else if mathematicalSymbol == "sqrt" {
-                displayValue = sqrt(displayValue)
-            }
+            calculator.setOperand(displayValue)
+            calculator.performOperation(mathematicalSymbol)
+            displayValue = calculator.result
         }
     }
 }
